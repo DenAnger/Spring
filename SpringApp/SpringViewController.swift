@@ -11,14 +11,14 @@ import Spring
 
 class SpringViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, OptionsViewControllerDelegate {
 
-    @IBOutlet weak var delayLabel: UILabel!
-    @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var forceLabel: UILabel!
-    @IBOutlet weak var delaySlider: UISlider!
-    @IBOutlet weak var durationSlider: UISlider!
-    @IBOutlet weak var forceSlider: UISlider!
-    @IBOutlet weak var ballView: SpringView!
-    @IBOutlet weak var animationPicker: UIPickerView!
+    @IBOutlet var delayLabel: UILabel!
+    @IBOutlet var durationLabel: UILabel!
+    @IBOutlet var forceLabel: UILabel!
+    @IBOutlet var delaySlider: UISlider!
+    @IBOutlet var durationSlider: UISlider!
+    @IBOutlet var forceSlider: UISlider!
+    @IBOutlet var ballView: SpringView!
+    @IBOutlet var animationPicker: UIPickerView!
     
     var selectedRow: Int = 0
     var selectedEasing: Int = 0
@@ -194,7 +194,6 @@ class SpringViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                 self.ballView.backgroundColor = UIColor(hex: "#279CEB")
             })
         })
-        
         animateView()
     }
     

@@ -21,21 +21,21 @@ protocol OptionsViewControllerDelegate: class {
 
 class OptionsViewController: UIViewController {
     
-    @IBOutlet weak var modalView: SpringView!
+    @IBOutlet var modalView: SpringView!
     
-    @IBOutlet weak var dampingLabel: UILabel!
-    @IBOutlet weak var velocityLabel: UILabel!
-    @IBOutlet weak var scaleLabel: UILabel!
-    @IBOutlet weak var xLabel: UILabel!
-    @IBOutlet weak var yLabel: UILabel!
-    @IBOutlet weak var rotateLabel: UILabel!
+    @IBOutlet var dampingLabel: UILabel!
+    @IBOutlet var velocityLabel: UILabel!
+    @IBOutlet var scaleLabel: UILabel!
+    @IBOutlet var xLabel: UILabel!
+    @IBOutlet var yLabel: UILabel!
+    @IBOutlet var rotateLabel: UILabel!
     
-    @IBOutlet weak var dampingSlider: UISlider!
-    @IBOutlet weak var velocitySlider: UISlider!
-    @IBOutlet weak var scaleSlider: UISlider!
-    @IBOutlet weak var xSlider: UISlider!
-    @IBOutlet weak var ySlider: UISlider!
-    @IBOutlet weak var rotateSlider: UISlider!
+    @IBOutlet var dampingSlider: UISlider!
+    @IBOutlet var velocitySlider: UISlider!
+    @IBOutlet var scaleSlider: UISlider!
+    @IBOutlet var xSlider: UISlider!
+    @IBOutlet var ySlider: UISlider!
+    @IBOutlet var rotateSlider: UISlider!
     
     var selectedDamping: CGFloat = 0.7
     var selectedVelocity: CGFloat = 0.7

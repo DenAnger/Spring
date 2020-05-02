@@ -11,9 +11,9 @@ import Spring
 
 class CodeViewController: UIViewController {
 
-    @IBOutlet weak var modalView: SpringView!
-    @IBOutlet weak var codeTextView: UITextView!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet var modalView: SpringView!
+    @IBOutlet var codeTextView: UITextView!
+    @IBOutlet var titleLabel: UILabel!
     var codeText: String = ""
     var data: SpringView!
     
@@ -75,5 +75,3 @@ class CodeViewController: UIViewController {
         UIApplication.shared.sendAction(#selector(SpringViewController.minimizeView(_:)), to: nil, from: self, for: nil)
     }
 }
-
-
