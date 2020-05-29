@@ -1,11 +1,13 @@
 {
   "images" : [
     {
+      "filename" : "appicon@40-1.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
+      "filename" : "appicon@60.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
@@ -47,11 +49,13 @@
       "size" : "60x60"
     },
     {
+      "filename" : "appicon@20.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "20x20"
     },
     {
+      "filename" : "appicon@40-2.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "20x20"

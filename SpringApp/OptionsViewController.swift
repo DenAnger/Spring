@@ -58,7 +58,7 @@ class OptionsViewController: UIViewController {
         xSlider.setValue(Float(data.x), animated: true)
         ySlider.setValue(Float(data.y), animated: true)
         rotateSlider.setValue(Float(data.rotate), animated: true)
-                
+        
         dampingLabel.text = getString("Damping", value: data.damping)
         velocityLabel.text = getString("Velocity", value: data.velocity)
         scaleLabel.text = getString("Scale", value: data.scaleX)
@@ -66,7 +66,7 @@ class OptionsViewController: UIViewController {
         yLabel.text = getString("y", value: data.y)
         rotateLabel.text = getString("Rotate", value: data.rotate)
     }
-
+    
     @IBAction func dampingSliderChanged(_ sender: AnyObject) {
         selectedDamping = sender.value(forKey: "value") as! CGFloat
         delegate?.dampingSliderChanged(sender)
@@ -107,20 +107,28 @@ class OptionsViewController: UIViewController {
         delegate?.resetButtonPressed(sender)
         dismiss(animated: true, completion: nil)
         
-        UIApplication.shared.sendAction(#selector(SpringViewController.maximizeView(_:)), to: nil, from: self, for: nil)
+        UIApplication.shared.sendAction(
+            #selector(SpringViewController.maximizeView(_:)),
+            to: nil, from: self, for: nil
+        )
     }
     
     @IBAction func closeButtonPressed(_ sender: AnyObject) {
         dismiss(animated: true, completion: nil)
         
-        UIApplication.shared.sendAction(#selector(SpringViewController.maximizeView(_:)), to: nil, from: self, for: nil)
+        UIApplication.shared.sendAction(
+            #selector(SpringViewController.maximizeView(_:)),
+            to: nil, from: self, for: nil
+        )
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        UIApplication.shared.sendAction(#selector(SpringViewController.minimizeView(_:)), to: nil, from: self, for: nil)
-        
+        UIApplication.shared.sendAction(
+            #selector(SpringViewController.minimizeView(_:)),
+            to: nil, from: self, for: nil
+        )
         modalView.animate()
     }
     

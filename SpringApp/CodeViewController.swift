@@ -10,11 +10,12 @@ import UIKit
 import Spring
 
 class CodeViewController: UIViewController {
-
+    
     @IBOutlet var modalView: SpringView!
     @IBOutlet var codeTextView: UITextView!
     @IBOutlet var titleLabel: UILabel!
-    var codeText: String = ""
+    
+    var codeText = ""
     var data: SpringView!
     
     override func viewDidLoad() {
@@ -58,7 +59,10 @@ class CodeViewController: UIViewController {
     }
     
     @IBAction func closeButtonPressed(_ sender: AnyObject) {
-        UIApplication.shared.sendAction(#selector(SpringViewController.maximizeView(_:)), to: nil, from: self, for: nil)
+        UIApplication.shared.sendAction(
+            #selector(SpringViewController.maximizeView(_:)),
+            to: nil, from: self, for: nil
+        )
         
         modalView.animation = "slideRight"
         modalView.animateFrom = false
@@ -72,6 +76,9 @@ class CodeViewController: UIViewController {
         
         modalView.animate()
         
-        UIApplication.shared.sendAction(#selector(SpringViewController.minimizeView(_:)), to: nil, from: self, for: nil)
+        UIApplication.shared.sendAction(
+            #selector(SpringViewController.minimizeView(_:)),
+            to: nil, from: self, for: nil
+        )
     }
 }

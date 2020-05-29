@@ -25,9 +25,9 @@ import UIKit
 #if !os(tvOS)
 @available(tvOS, unavailable)
 public class LoadingView: UIView {
-
-    @IBOutlet public weak var indicatorView: SpringView!
-
+    
+    @IBOutlet public var indicatorView: SpringView!
+    
     override public func awakeFromNib() {
         let animation = CABasicAnimation()
         animation.keyPath = "transform.rotation.z"
@@ -37,42 +37,44 @@ public class LoadingView: UIView {
         animation.repeatCount = HUGE
         indicatorView.layer.add(animation, forKey: "")
     }
-
+    
     class func designCodeLoadingView() -> UIView {
         
-        return Bundle(for: self).loadNibNamed("LoadingView", owner: self, options: nil)![0] as! UIView
+        return Bundle(for: self).loadNibNamed("LoadingView",
+                                              owner: self,
+                                              options: nil)![0] as! UIView
     }
 }
 
 public extension UIView {
-
+    
     struct LoadingViewConstants {
-        static let Tag = 1000
+        static let tagConstant = 1000
     }
-
+    
     func showLoading() {
-
-        if self.viewWithTag(LoadingViewConstants.Tag) != nil {
+        
+        if self.viewWithTag(LoadingViewConstants.tagConstant) != nil {
             // If loading view is already found in current view hierachy, do nothing
             return
         }
-
+        
         let loadingXibView = LoadingView.designCodeLoadingView()
         loadingXibView.frame = self.bounds
-        loadingXibView.tag = LoadingViewConstants.Tag
+        loadingXibView.tag = LoadingViewConstants.tagConstant
         self.addSubview(loadingXibView)
-
+        
         loadingXibView.alpha = 0
         SpringAnimation.spring(duration: 0.7, animations: {
             loadingXibView.alpha = 1
         })
     }
-
+    
     func hideLoading() {
-
-        if let loadingXibView = self.viewWithTag(LoadingViewConstants.Tag) {
+        
+        if let loadingXibView = self.viewWithTag(LoadingViewConstants.tagConstant) {
             loadingXibView.alpha = 1
-
+            
             SpringAnimation.springWithCompletion(duration: 0.7, animations: {
                 loadingXibView.alpha = 0
                 loadingXibView.transform = CGAffineTransform(scaleX: 3, y: 3)
@@ -81,6 +83,5 @@ public extension UIView {
             })
         }
     }
-
 }
 #endif

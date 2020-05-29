@@ -38,15 +38,14 @@ public class TransitionZoom: NSObject, UIViewControllerTransitioningDelegate, UI
             
             toView.alpha = 0
             toView.transform = CGAffineTransform(scaleX: 2, y: 2)
-
+            
             SpringAnimation.springEaseInOut(duration: duration) {
                 fromView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
                 fromView.alpha = 0
                 toView.transform = CGAffineTransform.identity
                 toView.alpha = 1
             }
-        }
-        else {
+        } else {
             container.addSubview(toView)
             container.addSubview(fromView)
             
@@ -67,12 +66,17 @@ public class TransitionZoom: NSObject, UIViewControllerTransitioningDelegate, UI
         return duration
     }
     
-    public func animationController(forPresentedController presented: UIViewController, presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(
+        forPresentedController presented: UIViewController,
+        presenting: UIViewController,
+        sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
         isPresenting = true
         return self
     }
     
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
         isPresenting = false
         return self
     }

@@ -23,9 +23,9 @@
 import UIKit
 
 open class SpringButton: UIButton, Springable {
-    @IBInspectable public var autostart: Bool = false
-    @IBInspectable public var autohide: Bool = false
-    @IBInspectable public var animation: String = ""
+    @IBInspectable public var autostart = false
+    @IBInspectable public var autohide = false
+    @IBInspectable public var animation = ""
     @IBInspectable public var force: CGFloat = 1
     @IBInspectable public var delay: CGFloat = 0
     @IBInspectable public var duration: CGFloat = 0.7
@@ -37,34 +37,34 @@ open class SpringButton: UIButton, Springable {
     @IBInspectable public var scaleX: CGFloat = 1
     @IBInspectable public var scaleY: CGFloat = 1
     @IBInspectable public var rotate: CGFloat = 0
-    @IBInspectable public var curve: String = ""
+    @IBInspectable public var curve = ""
     public var opacity: CGFloat = 1
-    public var animateFrom: Bool = false
-
-    lazy private var spring : Spring = Spring(self)
-
+    public var animateFrom = false
+    
+    lazy private var spring: Spring = Spring(self)
+    
     override open func awakeFromNib() {
         super.awakeFromNib()
         self.spring.customAwakeFromNib()
     }
-
+    
     open override func layoutSubviews() {
         super.layoutSubviews()
         spring.customLayoutSubviews()
     }
-
+    
     public func animate() {
         self.spring.animate()
     }
-
+    
     public func animateNext(completion: @escaping () -> ()) {
         self.spring.animateNext(completion: completion)
     }
-
+    
     public func animateTo() {
         self.spring.animateTo()
     }
-
+    
     public func animateToNext(completion: @escaping () -> ()) {
         self.spring.animateToNext(completion: completion)
     }

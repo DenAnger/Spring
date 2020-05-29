@@ -10,7 +10,7 @@ import UIKit
 import Spring
 
 class SpringViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, OptionsViewControllerDelegate {
-
+    
     @IBOutlet var delayLabel: UILabel!
     @IBOutlet var durationLabel: UILabel!
     @IBOutlet var forceLabel: UILabel!
@@ -20,8 +20,8 @@ class SpringViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet var ballView: SpringView!
     @IBOutlet var animationPicker: UIPickerView!
     
-    var selectedRow: Int = 0
-    var selectedEasing: Int = 0
+    var selectedRow = 0
+    var selectedEasing = 0
     
     var selectedForce: CGFloat = 1
     var selectedDuration: CGFloat = 1
@@ -49,7 +49,7 @@ class SpringViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         animateView()
         delayLabel.text = String(format: "Delay: %.1f", Double(selectedDelay))
     }
-
+    
     func dampingSliderChanged(_ sender: AnyObject) {
         selectedDamping = sender.value(forKey: "value") as! CGFloat
         animateView()
@@ -102,79 +102,81 @@ class SpringViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         ballView.curve = animationCurves[selectedEasing].rawValue
     }
     
-   @objc func minimizeView(_ sender: AnyObject) {
+    @objc func minimizeView(_ sender: AnyObject) {
         SpringAnimation.spring(duration: 0.7, animations: {
             self.view.transform = CGAffineTransform(scaleX: 0.935, y: 0.935)
         })
-        UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.lightContent, animated: true)
+        UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.lightContent,
+                                               animated: true)
     }
     
-   @objc func maximizeView(_ sender: AnyObject) {
+    @objc func maximizeView(_ sender: AnyObject) {
         SpringAnimation.spring(duration: 0.7, animations: {
             self.view.transform = CGAffineTransform(scaleX: 1, y: 1)
         })
-        UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.default, animated: true)
+        UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.default,
+                                               animated: true)
     }
-
+    
     let animations: [Spring.AnimationPreset] = [
-        .Shake,
-        .Pop,
-        .Morph,
-        .Squeeze,
-        .Wobble,
-        .Swing,
-        .FlipX,
-        .FlipY,
-        .Fall,
-        .SqueezeLeft,
-        .SqueezeRight,
-        .SqueezeDown,
-        .SqueezeUp,
-        .SlideLeft,
-        .SlideRight,
-        .SlideDown,
-        .SlideUp,
-        .FadeIn,
-        .FadeOut,
-        .FadeInLeft,
-        .FadeInRight,
-        .FadeInDown,
-        .FadeInUp,
-        .ZoomIn,
-        .ZoomOut,
-        .Flash
+        .shake,
+        .pop,
+        .morph,
+        .squeeze,
+        .wobble,
+        .swing,
+        .flipX,
+        .flipY,
+        .fall,
+        .squeezeLeft,
+        .squeezeRight,
+        .squeezeDown,
+        .squeezeUp,
+        .slideLeft,
+        .slideRight,
+        .slideDown,
+        .slideUp,
+        .fadeIn,
+        .fadeOut,
+        .fadeInLeft,
+        .fadeInRight,
+        .fadeInDown,
+        .fadeInUp,
+        .zoomIn,
+        .zoomOut,
+        .flash
     ]
-
-    var animationCurves: [Spring.AnimationCurve] = [
-        .EaseIn,
-        .EaseOut,
-        .EaseInOut,
-        .Linear,
-        .Spring,
-        .EaseInSine,
-        .EaseOutSine,
-        .EaseInOutSine,
-        .EaseInQuad,
-        .EaseOutQuad,
-        .EaseInOutQuad,
-        .EaseInCubic,
-        .EaseOutCubic,
-        .EaseInOutCubic,
-        .EaseInQuart,
-        .EaseOutQuart,
-        .EaseInOutQuart,
-        .EaseInQuint,
-        .EaseOutQuint,
-        .EaseInOutQuint,
-        .EaseInExpo,
-        .EaseOutExpo,
-        .EaseInOutExpo,
-        .EaseInCirc,
-        .EaseOutCirc,
-        .EaseInOutCirc,
-        .EaseInBack,
-        .EaseOutBack,
-        .EaseInOutBack
+    
+    let animationCurves: [Spring.AnimationCurve] = [
+        .easeIn,
+        .easeOut,
+        .easeInOut,
+        .linear,
+        .spring,
+        .easeInSine,
+        .easeOutSine,
+        .easeInOutSine,
+        .easeInQuad,
+        .easeOutQuad,
+        .easeInOutQuad,
+        .easeInCubic,
+        .easeOutCubic,
+        .easeInOutCubic,
+        .easeInQuart,
+        .easeOutQuart,
+        .easeInOutQuart,
+        .easeInQuint,
+        .easeOutQuint,
+        .easeInOutQuint,
+        .easeInExpo,
+        .easeOutExpo,
+        .easeInOutExpo,
+        .easeInCirc,
+        .easeOutCirc,
+        .easeInOutCirc,
+        .easeInBack,
+        .easeOutBack,
+        .easeInOutBack
     ]
     
     override func viewDidLoad() {
@@ -232,7 +234,8 @@ class SpringViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         delaySlider.setValue(Float(selectedDelay), animated: true)
         
         forceLabel.text = String(format: "Force: %.1f", Double(selectedForce))
-        durationLabel.text = String(format: "Duration: %.1f", Double(selectedDuration))
+        durationLabel.text = String(format: "Duration: %.1f",
+                                    Double(selectedDuration))
         delayLabel.text = String(format: "Delay: %.1f", Double(selectedDelay))
     }
     
@@ -240,15 +243,18 @@ class SpringViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         return 2
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView,
+                    numberOfRowsInComponent component: Int) -> Int {
         return component == 0 ? animations.count : animationCurves.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int,
+                    forComponent component: Int) -> String? {
         return component == 0 ? animations[row].rawValue : animationCurves[row].rawValue
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView,
+                    didSelectRow row: Int, inComponent component: Int) {
         switch component {
         case 0:
             selectedRow = row

@@ -34,7 +34,8 @@ public class TransitionManager: NSObject, UIViewControllerTransitioningDelegate,
         
         if isPresenting {
             toView.frame = container.bounds
-            toView.transform = CGAffineTransform(translationX: 0, y: container.frame.size.height)
+            toView.transform = CGAffineTransform(translationX: 0,
+                                                 y: container.frame.size.height)
             container.addSubview(fromView)
             container.addSubview(toView)
             SpringAnimation.springEaseInOut(duration: duration) {
@@ -42,9 +43,8 @@ public class TransitionManager: NSObject, UIViewControllerTransitioningDelegate,
                 fromView.alpha = 0.5
                 toView.transform = CGAffineTransform.identity
             }
-        }
-        else {
-
+        } else {
+            
             // 1. Rotating will change the bounds
             // 2. we have to properly reset toView
             // to the actual container's bounds, at
@@ -54,12 +54,15 @@ public class TransitionManager: NSObject, UIViewControllerTransitioningDelegate,
             toView.transform = CGAffineTransform.identity
             toView.frame = container.bounds
             toView.transform = transform
-
+            
             container.addSubview(toView)
             container.addSubview(fromView)
-
+            
             SpringAnimation.springEaseInOut(duration: duration) {
-                fromView.transform = CGAffineTransform(translationX: 0, y: fromView.frame.size.height)
+                fromView.transform = CGAffineTransform(
+                    translationX: 0,
+                    y: fromView.frame.size.height
+                )
                 toView.transform = CGAffineTransform.identity
                 toView.alpha = 1
             }
@@ -74,12 +77,17 @@ public class TransitionManager: NSObject, UIViewControllerTransitioningDelegate,
         return duration
     }
     
-    public func animationController(forPresentedController presented: UIViewController, presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(
+        forPresentedController presented: UIViewController,
+        presenting: UIViewController,
+        sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
         isPresenting = true
         return self
     }
     
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
         isPresenting = false
         return self
     }

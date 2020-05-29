@@ -23,14 +23,17 @@
 import UIKit
 
 public class AsyncImageView: UIImageView {
-
-    public var placeholderImage : UIImage?
-
-    public var url : NSURL? {
+    
+    public var placeholderImage: UIImage?
+    
+    public var url: NSURL? {
         didSet {
             self.image = placeholderImage
             if let urlString = url?.absoluteString {
-                ImageLoader.sharedLoader.imageForUrl(urlString: urlString) { [weak self] image, url in
+                ImageLoader.sharedLoader.imageForUrl(
+                    urlString: urlString
+                ) { [weak self] image, url in
+                    
                     if let strongSelf = self {
                         DispatchQueue.main.async(execute: { () -> Void in
                             if strongSelf.url?.absoluteString == url {
@@ -42,10 +45,9 @@ public class AsyncImageView: UIImageView {
             }
         }
     }
-
+    
     public func setURL(url: NSURL?, placeholderImage: UIImage?) {
         self.placeholderImage = placeholderImage
         self.url = url
     }
-
 }
