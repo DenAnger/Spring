@@ -23,9 +23,9 @@
 import UIKit
 
 open class SpringImageView: UIImageView, Springable {
-    @IBInspectable public var autostart = false
-    @IBInspectable public var autohide = false
-    @IBInspectable public var animation = ""
+    @IBInspectable public var autostart: Bool = false
+    @IBInspectable public var autohide: Bool = false
+    @IBInspectable public var animation: String = ""
     @IBInspectable public var force: CGFloat = 1
     @IBInspectable public var delay: CGFloat = 0
     @IBInspectable public var duration: CGFloat = 0.7
@@ -37,7 +37,7 @@ open class SpringImageView: UIImageView, Springable {
     @IBInspectable public var scaleX: CGFloat = 1
     @IBInspectable public var scaleY: CGFloat = 1
     @IBInspectable public var rotate: CGFloat = 0
-    @IBInspectable public var curve = ""
+    @IBInspectable public var curve: String = ""
     public var opacity: CGFloat = 1
     public var animateFrom: Bool = false
     
