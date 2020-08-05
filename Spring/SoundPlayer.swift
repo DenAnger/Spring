@@ -26,7 +26,7 @@ import AudioToolbox
 public struct SoundPlayer {
     
     static var filename: String?
-    static var enabled = true
+    static var enabled: Bool = true
     
     private struct Internal {
         static var cache = [URL: SystemSoundID]()

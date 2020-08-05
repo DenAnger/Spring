@@ -60,8 +60,8 @@ public func delay(delay: Double, closure: @escaping () -> ()) {
         ) / Double(NSEC_PER_SEC), execute: closure)
 }
 
-public func imageFromURL(_ Url: String) -> UIImage {
-    let url = Foundation.URL(string: Url)
+public func imageFromURL(_ urlImage: String) -> UIImage {
+    let url = Foundation.URL(string: urlImage)
     let data = try? Data(contentsOf: url!)
     return UIImage(data: data!)!
 }
@@ -72,7 +72,7 @@ public extension UIColor {
         var green: CGFloat = 0.0
         var blue: CGFloat = 0.0
         var alpha: CGFloat = 1.0
-        var hex = hex
+        var hex: String = hex
         
         if hex.hasPrefix("#") {
             let index = hex.index(hex.startIndex, offsetBy: 1)
@@ -142,7 +142,7 @@ public func dateFromString(date: String, format: String) -> Date {
     }
 }
 
-public func randomStringWithLength (len: Int) -> NSString {
+public func randomStringWithLength(len: Int) -> NSString {
     
     let letters: NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
     

@@ -24,7 +24,7 @@ import UIKit
 
 @IBDesignable public class DesignableTextField: SpringTextField {
     
-    @IBInspectable public var placeholderColor = UIColor.clear {
+    @IBInspectable public var placeholderColor: UIColor = UIColor.clear {
         didSet {
             guard let placeholder = placeholder else {
                 return
@@ -76,7 +76,7 @@ import UIKit
         }
     }
     
-    @IBInspectable public var borderColor = UIColor.clear {
+    @IBInspectable public var borderColor: UIColor = UIColor.clear {
         didSet {
             layer.borderColor = borderColor.cgColor
         }

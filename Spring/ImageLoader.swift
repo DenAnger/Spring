@@ -63,7 +63,7 @@ public class ImageLoader {
                 return
             }
             
-            let downloadTask = URLSession.shared.dataTask(
+            let downloadTask: URLSessionDataTask = URLSession.shared.dataTask(
                 with: URL(string: urlString)!,
                 completionHandler: { (data, response, error) -> Void in
                     

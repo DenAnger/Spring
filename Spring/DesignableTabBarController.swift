@@ -24,7 +24,7 @@ import UIKit
 
 @IBDesignable class DesignableTabBarController: UITabBarController {
     
-    @IBInspectable var normalTint = UIColor.clear {
+    @IBInspectable var normalTint: UIColor = UIColor.clear {
         didSet {
             UITabBar.appearance().tintColor = normalTint
             UITabBarItem.appearance().setTitleTextAttributes(
@@ -34,7 +34,7 @@ import UIKit
         }
     }
     
-    @IBInspectable var selectedTint = UIColor.clear {
+    @IBInspectable var selectedTint: UIColor = UIColor.clear {
         didSet {
             UITabBar.appearance().tintColor = selectedTint
             UITabBarItem.appearance().setTitleTextAttributes(
@@ -44,7 +44,7 @@ import UIKit
         }
     }
     
-    @IBInspectable var fontName = "" {
+    @IBInspectable var fontName: String = "" {
         didSet {
             UITabBarItem.appearance().setTitleTextAttributes(
                 [NSAttributedString.Key.foregroundColor: normalTint,

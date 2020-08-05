@@ -314,7 +314,7 @@ public class Spring: NSObject {
         if let animation = AnimationPreset(rawValue: animation) {
             switch animation {
             case .slideLeft:
-                x = 300 *  force
+                x = 300 * force
             case .slideRight:
                 x = -300 * force
             case .slideDown:
